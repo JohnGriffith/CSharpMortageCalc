@@ -3,7 +3,7 @@
 <div class="container">
     <h1 class="mb-2">Loan Calculator</h1>
 
-    <div class="row">
+    <div class="row mb-2">
         <div class="col">
             <form class="loanForm" asp-action="App" asp-controller="Home" method="post">
                 <div class="form-row p-2">
@@ -73,11 +73,11 @@
                         {
                             <tr>
                                 <td>@item.Month</td>
-                                <td>@item.Payment</td>
-                                <td>@item.MonthlyPrincipal</td>
-                                <td>@item.MonthlyInterest</td>
-                                <td>@item.TotalInterest</td>
-                                <td>@item.Balance</td>
+                                <td>@item.Payment.ToString("C")</td>
+                                <td>@item.MonthlyPrincipal.ToString("C")</td>
+                                <td>@item.MonthlyInterest.ToString("C")</td>
+                                <td>@item.TotalInterest.ToString("C")</td>
+                                <td>@item.Balance.ToString("C")</td>
                             </tr>
                         }
                     </tbody>

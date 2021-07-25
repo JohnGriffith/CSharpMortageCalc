@@ -1,4 +1,5 @@
-﻿using CSharpMortageCalc.Models;
+﻿using CSharpMortageCalc.Helpers;
+using CSharpMortageCalc.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -32,6 +33,7 @@ namespace CSharpMortageCalc.Controllers
             loan.TotalCost = 0.0m;
             loan.Rate = 5.0m;
             loan.Term = 360;
+
             return View(loan);
         }
 
@@ -39,9 +41,12 @@ namespace CSharpMortageCalc.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult App(Loan loan)
         {
-            //Calculate the Loan
+            //Calculate the Loan and get Payments
+            var loanHelper = new LoanHelper();
 
-            return View(loan);
+            Loan newLoan = loanHelper.GetPayments(loan);
+
+            return View(newLoan);
         }
 
         public IActionResult Privacy()
